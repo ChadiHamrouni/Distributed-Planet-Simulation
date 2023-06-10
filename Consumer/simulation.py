@@ -16,7 +16,6 @@ DARK_GREY = (80, 78, 81)
 
 FONT = pygame.font.SysFont("comicsans", 16)
 
-
 class Planet:
     AU = 149.6e6 * 1000
     G = 6.67428e-11
@@ -84,12 +83,10 @@ class Planet:
         self.y -= self.y_vel * self.TIMESTEP
         self.orbit.append((self.x, self.y))
 
-
 def load_data_from_file(filename):
     with open(filename, 'r') as f:
         data = json.load(f)
     return data
-
 
 def apply_forces_from_data(planets, data):
     for planet in planets:
@@ -101,14 +98,12 @@ def apply_forces_from_data(planets, data):
             planet.x_vel += force_x / planet.mass * planet.TIMESTEP
             planet.y_vel += force_y / planet.mass * planet.TIMESTEP
 
-
 def main():
     # Initialize connection to RabbitMQ server
     # credentials = pika.PlainCredentials('admin1', 'admin123')
     # connection = pika.BlockingConnection(
     # pika.ConnectionParameters(host='192.168.1.24', credentials=credentials))
     # channel = connection.channel()
-
     # channel.queue_declare(queue='planet_simulation')
 
     run = True
